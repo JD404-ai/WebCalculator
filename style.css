@@ -1,0 +1,220 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #a2aac4;
+    flex-direction: column;
+}
+
+#topic {
+    color: whitesmoke;
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.wrapper {
+    display: flex;
+    gap: 100px;
+    border-radius: 25px;
+    margin: 10px;
+}
+
+.calculator {
+    width: 350px;
+    height: 500px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-radius: 20px;
+    border: 2px solid #ccc;
+    overflow: hidden;
+}
+
+.calculator span {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    background: #eee;
+    font-size: 1.4em;
+    color: #333;
+    font-weight: 500;
+    border: 1px solid #ccc;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 -4px 8px rgba(255, 255, 255, 0.1);
+    position: relative;
+    border-radius: 8px;
+}
+
+.calculator span:not(.clear):not(.equal) {
+    border: 1px solid #ccc;
+}
+
+.calculator span:hover {
+    background: #ddd;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 -8px 16px rgba(255, 255, 255, 0.2);
+}
+
+.calculator .operations {
+    background: #393e46;
+    color: #fff;
+}
+
+.calculator .clear {
+    background: #831111;
+    color: #fff;
+}
+
+.calculator .inputArea {
+    grid-column: span 4;
+    padding: 20px 10px;
+    outline: none;
+    border: none;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calculator .plus {
+    grid-row: span 2;
+    height: 160px;
+    line-height: 160px;
+}
+
+.calculator .equal {
+    width: 160px;
+    grid-column: span 2;
+    background: #4b7bec;
+    font-size: 1.8em;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#history {
+    width: 350px;
+    height: 500px;
+    overflow-y: scroll;
+    font-size: 1.1em;
+    background: #4b7bec;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid #ccc;
+}
+
+#history::-webkit-scrollbar {
+    width: 8px;
+}
+
+#history::-webkit-scrollbar-thumb {
+    background-color: #393e46;
+    border-radius: 10px;
+}
+
+#history h3 {
+    padding: 10px 0;
+    font-size: 1.4em;
+    color: #fff;
+}
+
+#history p {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #eee;
+    margin-bottom: 10px;
+}
+
+#history p:last-child {
+    font-size: 1.3em;
+    font-weight: 500;
+    color: #eee;
+}
+
+#B {
+    background-color: darkgoldenrod;
+}
+
+.advancedLayout {
+    display: none;
+    width: 350px;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 20px;
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.advancedLayout span {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    background: #e6e6e6;
+    font-size: 1.2em;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+/* .advancedLayout {
+    display: grid;
+    width: 350px;
+    height: auto;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-template-rows: repeat(2, 1fr);   /* 2 rows */
+    gap: 10px;
+    padding: 20px;
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.advancedLayout span {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    background: #e6e6e6;
+    font-size: 1.2em;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: background 0.3s, box-shadow 0.3s;
+} */
+
+.advancedLayout span:hover {
+    background: #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 -4px 8px rgba(255, 255, 255, 0.2);
+}
+
+#more {
+    background: #f1c40f;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width:100px;
+    height: 50px;
+
+}
+
+#more:hover {
+    background: #e67e22;
+}

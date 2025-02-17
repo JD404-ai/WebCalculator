@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+    <div id="topic">CALCULATE HERE!</div>
+
+    <div class="wrapper">
+        <!-- Advanced Functions Layout (hidden initially) -->
+        <div id="advancedLayout" class="advancedLayout">
+            <span onclick="document.calc.txt.value += '%';">%</span>
+            <span onclick="document.calc.txt.value += '!';">!</span>
+            <span onclick="document.calc.txt.value += 'e';">e^x</span>
+            <span onclick="document.calc.txt.value += 'π';">π</span>
+            <span onclick="document.calc.txt.value += '(';">(</span>
+            <span onclick="document.calc.txt.value += ')';">)</span>
+        </div>
+
+        <!-- Calculator Layout -->
+        <form action="" class="calculator" name="calc">
+            <input type="text" name="txt" class="inputArea">
+            
+            <span onclick="document.calc.txt.value += '1';">1</span>
+            <span onclick="document.calc.txt.value += '2';">2</span>
+            <span onclick="document.calc.txt.value += '3';">3</span>
+            <span class="clear" onclick="document.calc.txt.value ='';">C</span>
+            <span onclick="document.calc.txt.value += '4';">4</span>
+            <span onclick="document.calc.txt.value += '5';">5</span>
+            <span onclick="document.calc.txt.value += '6';">6</span>
+            <span class="operations plus" onclick="document.calc.txt.value += '+';">+</span>
+            <span onclick="document.calc.txt.value += '7';">7</span>
+            <span onclick="document.calc.txt.value += '8';">8</span>
+            <span onclick="document.calc.txt.value += '9';">9</span>
+            <span onclick="document.calc.txt.value += '0';">0</span>
+            <span onclick="document.calc.txt.value += '.';">.</span>
+            <span id="B" onclick="document.calc.txt.value = backspace(document.calc.txt.value);">B</span>
+            <span class="operations" onclick="document.calc.txt.value += '-';">-</span>
+            <span class="equal" onclick="document.calc.txt.value = calculation(document.calc.txt.value);">=</span>
+            <span class="operations" onclick="document.calc.txt.value += '*';">*</span>
+            <span class="operations" onclick="document.calc.txt.value += '/';">/</span>
+
+            <!-- More button that will show the advanced functions -->
+            
+        </form>
+        <span id="more" class="more" onclick="toggleAdvancedLayout()">More</span>
+        <!-- History Section -->
+        <div id="history">
+            <h3>History</h3>
+            <p></p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        let history = document.getElementById('history');
+
+        // Function for performing calculations and adding results to the history
+        function calculation(v) {
+            let para = document.createElement('p');
+            let data = v + " = " + eval(v); // eval is used to evaluate the input string as a JavaScript expression
+            para.innerText = data; // Display the calculation result in the history
+            history.appendChild(para); // Append the result to the history
+            return eval(v); // Return the evaluated result to the input
+        }
+
+        // Function for backspace (removing last character from the input)
+        function backspace(b) {
+            return b.slice(0, b.length - 1); // Slice the string, removing the last character
+        }
+
+        // Event listener for keyboard input
+        document.addEventListener('keydown', function (event) {
+            const key = event.key;
+
+            if (key >= 0 && key <= 9) {
+                document.calc.txt.value += key; // Append numbers to the input area
+            } else if (key === '+' || key === '-' || key === '*' || key === '/') {
+                document.calc.txt.value += key; // Append operators to the input area
+            } else if (key === 'Enter') {
+                document.calc.txt.value = calculation(document.calc.txt.value); // Perform calculation on Enter key
+            } else if (key === 'Backspace') {
+                document.calc.txt.value = backspace(document.calc.txt.value); // Perform backspace operation
+            } else if (key === 'c' || key === 'C') {
+                document.calc.txt.value = ''; // Clear the input when 'C' is pressed
+            } else if (key === '.') {
+                document.calc.txt.value += key; // Append '.' to the input area
+            }
+            // Handle advanced functions with keyboard input
+            else if (key === '%') {
+            document.calc.txt.value += '%';
+            } else if (key === '!') {
+            document.calc.txt.value += '!';
+            } else if (key === 'e') {
+             document.calc.txt.value += 'e';
+            } else if (key === 'p' || key === 'P') {  // Added case-insensitive handling for 'π'
+            document.calc.txt.value += 'π';
+            } else if (key === '(') {
+             document.calc.txt.value += '(';
+            } else if (key === ')') {
+                     document.calc.txt.value += ')';}       
+
+        });
+
+        // Toggle the visibility of the advanced layout
+        function toggleAdvancedLayout() {
+            const advancedLayout = document.getElementById('advancedLayout');
+            advancedLayout.style.display = (advancedLayout.style.display === 'none' || advancedLayout.style.display === '') ? 'flex' : 'none';
+        }
+    </script>
+</body>
+</html>
+     
+            
